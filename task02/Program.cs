@@ -26,12 +26,12 @@ public class Answer {
     public static void PrintArray (int [,] matrix)
     {
       // Введите свое решение ниже
-      for (int i = 0; i < matrix.GetLength(0); i++)
+     for (int i = 0; i < matrix.GetLength(0); i++)
       {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-          Console.Write($"{matrix[i, j]}\t");
-        }
+          for (int j = 0; j < matrix.GetLength(1); j++)
+          {
+            Console.Write($"{matrix[i, j]}\t");
+          }
         Console.WriteLine();
       }
 
@@ -43,17 +43,17 @@ public class Answer {
     public static int[,] CreateIncreasingMatrix(int n, int m, int k)
     {
       // Введите свое решение ниже
-      int [,] matr = new int[n, m];
+      int [,] matrix = new int[n, m];
       int num = 1;
-      for (int i = 0; i < n; i++)
+      for (int i = 0; i < n; i++) 
       {
         for (int j = 0; j < m; j++)
         {
-          matr[i, j] = num;
+          matrix[i, j] = num;
           num = num + k;
         }
       }
-      return matr;
+      return matrix;
 
     }
   
@@ -63,11 +63,16 @@ public class Answer {
       
       if (rowPosition < matrix.GetLength(0) && columnPosition < matrix.GetLength(1)) 
       {
-        int[] array = new int[2] {matrix[rowPosition, columnPosition], 0};
+        int[] array = new int[2];
+        array[0] = matrix[rowPosition, columnPosition];
+        array[1] = 0;
         return array;        
       }
-      int[] arrayNull = new int[0];
-      return arrayNull;
+      else 
+      {
+        int[] arrayNull = new int[1];
+        return arrayNull;
+      }
 
     }
 
