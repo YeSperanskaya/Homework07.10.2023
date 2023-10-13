@@ -18,76 +18,75 @@
 //вывести на экран "There is no such index". Если элемент есть, вывести на экран "The number in [{x}, {y}] is {значение}".
 
 
-
-
 using System;
 
 public class Answer {
     public static void PrintArray (int [,] matrix)
     {
       // Введите свое решение ниже
-     for (int i = 0; i < matrix.GetLength(0); i++)
-      {
-          for (int j = 0; j < matrix.GetLength(1); j++)
-          {
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
             Console.Write($"{matrix[i, j]}\t");
-          }
-        Console.WriteLine();
-      }
-
-
-
+        }
+        Console.Write($"\r");
+    }
+ 
 
     }
   
     public static int[,] CreateIncreasingMatrix(int n, int m, int k)
     {
       // Введите свое решение ниже
-      int [,] matrix = new int[n, m];
-      int num = 1;
-      for (int i = 0; i < n; i++) 
-      {
-        for (int j = 0; j < m; j++)
+    int[,] matrix = new int[n, m];
+    int currentValue = 1;
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-          matrix[i, j] = num;
-          num = num + k;
+            matrix[i, j] = currentValue;
+            currentValue += k;
         }
-      }
-      return matrix;
-
     }
+    return matrix;
+    }
+
+   
   
     public static int[] FindNumberByPosition (int [,] matrix, int rowPosition, int columnPosition)
     {  
       // Введите свое решение ниже
-      
-      if (rowPosition < matrix.GetLength(0) && columnPosition < matrix.GetLength(1)) 
-      {
-        int[] array = new int[2];
-        array[0] = matrix[rowPosition, columnPosition];
-        array[1] = 0;
-        return array;        
-      }
-      else 
-      {
-        int[] arrayNull = new int[1];
-        return arrayNull;
-      }
+    int rows = matrix.GetLength(0);
+    int columns = matrix.GetLength(1);
+
+    if( rowPosition >= 0 && rowPosition < rows && columnPosition >= 0 && columnPosition < columns)
+    {
+        int value = matrix[rowPosition, columnPosition];
+        return new int[] {value, 0};
+    }
+    else return new int[] { 0 };
 
     }
+
+   
 
     public static void PrintCheckIfError (int[] results, int X, int Y)
     {
       // Введите свое решение ниже
-      if (results[0] > 0) 
-      {
-        Console.WriteLine($"The number in [{X}, {Y}] is {results[0]}");
-      }
-      else 
-      {
-        Console.WriteLine("There is no such index");
-        }
+
+    if (results[0] == 0 ) 
+    {
+        Console.Write("There is no such index");
     }
+    else 
+    {
+        int value = results[0];
+        Console.Write($"The number in [{X}, {Y}] is {value}");
+    }
+    }
+       
+   
 
     // Не удаляйте и не меняйте метод Main! 
     static public void Main(string[] args) {
@@ -101,11 +100,11 @@ public class Answer {
            y = int.Parse(args[4]);
         } else {
            // Здесь вы можете поменять значения для отправки кода на Выполнение
-           n = 6;
+           n = 3;
            m = 4;
-           k = 2;
-           x = 8;
-           y = 8;
+           k = 4;
+           x = 2;
+           y = 7;
         }
 
         // Не удаляйте строки ниже
