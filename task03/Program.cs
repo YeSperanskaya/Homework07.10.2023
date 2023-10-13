@@ -22,28 +22,66 @@ public class Answer {
     public static void PrintArray (int [,] matrix)
     {
       // Введите свое решение ниже
-
+ for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Console.Write($"{matrix[i, j]}\t");
+        }
+        Console.Write($"\r");
+    }
 
     }
   
     public static int[,] CreateIncreasingMatrix(int n, int m, int k)
     {
       // Введите свое решение ниже
-
-
+    int[,] matrix = new int[n, m];
+    int currentValue = 1;
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            matrix[i, j] = currentValue;
+            currentValue += k;
+        }
     }
+    return matrix;
+    }
+
+    
   
     static void PrintListAvr (double [] list)
     {
-      // Введите свое решение ниже
+      Console.WriteLine("The averages in columns are:");     
 
+      // Введите свое решение ниже
+      for (int i = 0; i < list.Length; i++)
+      {
+        
+          Console.Write($"{list[i]:F2}\t");
+      }
 
     }
 
     static double [] FindAverageInColumns (int [,] matrix)
     { 
       // Введите свое решение ниже
-
+// Метод FindAverageInColumns принимает целочисленную матрицу типа int[,] и возвращает одномерный массив типа double. 
+//Этот метод вычисляет среднее значение чисел в каждом столбце матрицы и сохраняет результаты в виде списка.
+      double[] arr = new double[matrix.GetLength(1)];
+      for (int j = 0; j < matrix.GetLength(1); j++)
+      {
+        double sum = 0.0;
+        double count = 0.0;
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+          sum = sum + Convert.ToDouble(matrix[i, j]);
+          count++;
+        }
+        arr[j] = sum / count;
+      }
+      return arr;
 
     }
 
@@ -59,8 +97,8 @@ public class Answer {
         } else {
            // Здесь вы можете поменять значения для отправки кода на Выполнение
            n = 3;
-           m = 4;
-           k = 2;
+           m = 6;
+           k = 3;
         }
 
         // Не удаляйте строки ниже
